@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import image from "../assets/cp-logo.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const Navbar = () => {
             to="/"
             className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
           >
-            CryptoPalace
+            <img src={image} alt="Crypto Background" className="h-10 " />
           </Link>
         </div>
 

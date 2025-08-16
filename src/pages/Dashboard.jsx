@@ -12,7 +12,7 @@ const Dashboard = () => {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center p-4">
+    <div className="min-h-screen pt-20 w-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center p-4">
       <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
         Largest Crypto Marketplace
       </h1>

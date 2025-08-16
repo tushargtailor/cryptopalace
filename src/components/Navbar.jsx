@@ -1,35 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <nav className="bg-gradient-to-r from-transparent via-cyan-500 to-transparent shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="text-2xl font-bold text-white">
-            <Link
-              to="/"
-              className="text-white hover:text-gray-200 font-medium transition-colors duration-300"
-            >
-              CryptoPalace
-            </Link>
-          </div>
+  const location = useLocation();
 
-          {/* Navigation Links */}
-          <div className="flex space-x-6">
+  const navLinks = [
+    { to: "/dashboard", label: "Dashboard" },
+    { to: "/portfolio", label: "Portfolio" },
+  ];
+
+  return (
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-lg border-b border-white/10 h-16">
+      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+        {/* Logo */}
+        <div>
+          <Link
+            to="/"
+            className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:scale-105 transition-transform"
+          >
+            CryptoPalace
+          </Link>
+        </div>
+
+        {/* Navigation Links */}
+        <div className="flex items-center space-x-8">
+          {navLinks.map(({ to, label }) => (
             <Link
-              to="/dashboard"
-              className="text-white hover:text-gray-200 font-medium transition-colors duration-300"
+              key={to}
+              to={to}
+              className={`relative text-white font-medium transition duration-300 ${
+                location.pathname === to
+                  ? "text-cyan-400"
+                  : "hover:text-cyan-300"
+              }`}
             >
-              Dashboard
+              {label}
+              {location.pathname === to && (
+                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-400 rounded-full"></span>
+              )}
             </Link>
-            <Link
-              to="/portfolio"
-              className="text-white hover:text-gray-200 font-medium transition-colors duration-300"
-            >
-              Portfolio
-            </Link>
-          </div>
+          ))}
         </div>
       </div>
     </nav>
